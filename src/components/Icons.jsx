@@ -40,6 +40,9 @@ const LeftArrow = styled(KeyboardArrowLeftIcon) `
   &:hover {
     opacity: 0.5;
   }
+  @media (max-width: 1110px) {
+    filter: invert(0);
+  }                           
 `
 const RightArrow = styled(KeyboardArrowRightIcon) `
   font-size: 40px !important;
@@ -50,12 +53,23 @@ const RightArrow = styled(KeyboardArrowRightIcon) `
   &:hover {
     opacity: 0.5;
   }
+  @media (max-width: 1110px) {
+    filter: invert(0);
+  }
 `
 const Controls = styled.div`
   display: flex;
   gap: 30px;
 `
-const Icons = () => {
+const Icons = ({index, setIndex}) => {
+
+    const onArrowClick = (direction) => {
+        if(direction === "left") {
+            index !== 0 ? setIndex(index - 1) : setIndex(2)
+        } else {
+            index !== 2 ? setIndex(index + 1) : setIndex(0)
+        }
+    }
   return (
     <Container>
         <IconsContainer>
@@ -63,8 +77,8 @@ const Icons = () => {
          <Linkedin/>
         </IconsContainer>
         <Controls>
-         <LeftArrow/>
-         <RightArrow/>
+         <LeftArrow onClick={() => onArrowClick("left")}/>
+         <RightArrow onClick={() => onArrowClick("right")}/>
         </Controls>
     </Container>
   )

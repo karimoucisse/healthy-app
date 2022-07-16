@@ -6,7 +6,9 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 30px 0;
- 
+  @media (max-width: 1110px) {
+    padding: 0;
+  }
 `
 const Logo = styled.div`
   font-weight: 700;
@@ -24,6 +26,17 @@ const List = styled.ul`
   /* justify-content: center;
   align-items: center; */
   gap: 23px;
+  @media (max-width: 1110px) {
+    display: initial;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    padding: 100px 0;
+  }
 `
 const Element = styled.li`
   display: flex;
@@ -58,11 +71,27 @@ const Element = styled.li`
     background-color: limegreen;
     z-index: -1;
     transition: 0.5s ease-in-out;
-
-    
   }
   &:hover:before {
     width: 100%;
+  }
+
+  @media (max-width: 1110px) {
+    padding: 20px;
+    color: #333 !important;
+    font-size: 36px;
+    text-align: center;
+  }
+`
+const MenuIcon = styled.span`
+  display: none;
+  @media (max-width: 1110px) {
+    display: initial;
+    position: fixed;
+    right: 50px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 10000;
   }
 `
 const Header = () => {
@@ -90,6 +119,7 @@ const Header = () => {
           number= {number}
           >Contact</Element>
       </List>
+      <MenuIcon/>
     </Container>
   )
 }

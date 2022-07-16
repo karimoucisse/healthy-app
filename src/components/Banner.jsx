@@ -6,6 +6,10 @@ const BannerText = styled.div`
   position: relative;
   max-width: 500px;
   margin-right: 50px;
+  @media (max-width: 1110px) {
+    max-width: 100%;
+    padding-right: 0;
+  }
 `
 const Title = styled.h2`
   font-size: 50px;
@@ -13,6 +17,9 @@ const Title = styled.h2`
   font-weight: 800;
   line-height: 1.2em;
   color: #333;
+  @media (max-width: 1110px) {
+    font-size: 30px;
+  }
 `
 const Paragraph = styled.p`
   font-size: 18px;
@@ -23,10 +30,15 @@ const Paragraph = styled.p`
 
 const BannerImg = styled.div`
   position: relative;
-  width: 550px;
-  height: 420px;
+  width: 440px;
+  height: 440px;
   border-radius: 10px;
   overflow: hidden;
+  @media (max-width: 1110px) {
+    width: 100%;
+    height: 50vh;
+    margin: 20px 0 ;
+  }
 `
 const Img = styled.img`
   position: absolute;
@@ -65,18 +77,18 @@ const More = styled.div`
   }
 
 `
-const Banner = () => {
+const Banner = ({index}) => {
   return (
     <>
         <BannerText>
-            <Title>{Content[0].firstTitle} <br/> {Content[0].secondTitle}</Title>
+            <Title>{Content[index].firstTitle} <br/> {Content[index].secondTitle}</Title>
             <Paragraph>
-                {Content[0].paragraph}
+                {Content[index].paragraph}
             </Paragraph>
             <More>Voir plus</More>
         </BannerText>
         <BannerImg>
-            <Img src= "../image/photo1.jpg"/>
+            <Img src= {`../image/photo${index+1}.jpg`}/>
         </BannerImg>
     </>
   )

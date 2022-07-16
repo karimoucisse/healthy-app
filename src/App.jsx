@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 import Banner from "./components/Banner"
 import Header from "./components/Header"
@@ -20,21 +21,33 @@ const Container = styled.div`
 
 }
 
+@media (max-width: 1110px) {
+  padding: 20px 50px;
+  &::before {
+    display: none;
+  }
+}
 `
 const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 50px;
+  @media (max-width: 1110px) {
+    margin-top: 0;
+    flex-direction: column-reverse;
+  }
 `
 const App = () => {
+  const [index, setIndex] = useState(0)
+
   return (
     <Container>
       <Header/>
       <Content>
-        <Banner/>
+        <Banner index= {index}/>
       </Content>
-      <Icons/>
+      <Icons setIndex= {setIndex} index= {index}/>
     </Container>
   )
 }
